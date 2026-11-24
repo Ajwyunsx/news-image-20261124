@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Global Ledger — Tuesday, 24 November 2026</title>
+<style>
+  @page { size: 1024px 1024px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1024px; height: 1024px;
+    background: #fdfbf6;
+    color: #14110f;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 1024px; height: 1024px;
+    padding: 20px 34px 14px 34px;
+    display: flex; flex-direction: column;
+    background:
+      linear-gradient(#fdfbf6, #fdfbf6);
+  }
+  .sans { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+  /* ---------- top strip ---------- */
+  .strip {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8.6px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #4a443e; padding-bottom: 6px;
+  }
+  .strip b { font-weight: 700; color: #14110f; }
+
+  /* ---------- masthead ---------- */
+  .masthead { border-top: 3px solid #14110f; padding-top: 6px; }
+  .mast-title {
+    font-size: 50px; line-height: 0.96; font-weight: 700;
+    letter-spacing: -1.8px; text-align: center;
+    margin: 2px 0 0 0;
+  }
+  .mast-sub {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8.4px; letter-spacing: 1.9px; text-transform: uppercase;
+    color: #4a443e; margin: 5px 0 6px 0;
+  }
+  .mast-sub .dot { display: none; }
+
+  /* ---------- date band ---------- */
+  .dateband {
+    background: #14110f; color: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 14px 7px 14px; margin-bottom: 10px;
+  }
+  .dateband .date {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; line-height: 1;
+  }
+  .dateband .datemeta {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.8px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: #cfc8be; text-align: right; line-height: 1.5;
+  }
+
+  /* ---------- generic type ---------- */
+  .kicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8.4px; font-weight: 700; letter-spacing: 1.7px;
+    text-transform: uppercase; color: #e3120b; margin-bottom: 4px;
+  }
+  h2 { margin: 0; font-weight: 700; letter-spacing: -0.4px; }
+  p { margin: 0 0 6px 0; }
+  .body { font-size: 11.2px; line-height: 1.42; color: #1d1916; }
+  .body p + p { margin-top: 5px; }
+  .standfirst {
+    font-size: 13.2px; line-height: 1.34; color: #3a342e;
+    margin: 6px 0 8px 0;
+  }
+  .rule { border-top: 1px solid #14110f; }
+  .rule-thin { border-top: 1px solid #b9b2a7; }
+
+  /* ---------- lead ---------- */
+  .topgrid { display: grid; grid-template-columns: 630px 304px; gap: 22px; }
+  .lead h1 {
+    font-size: 38px; line-height: 1.03; letter-spacing: -1.2px;
+    margin: 2px 0 0 0; font-weight: 700;
+  }
+  .lead .deck {
+    font-size: 13.4px; line-height: 1.31; color: #2f2a25;
+    margin: 6px 0 8px 0; font-style: italic;
+  }
+  .leadcols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .lead .body { font-size: 10.7px; line-height: 1.38; }
+  .byline {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: #6b635a; margin-top: 7px;
+  }
+  .pull {
+    margin-top: 7px; padding: 7px 10px 8px 10px;
+    border-left: 3px solid #e3120b; background: #f6f1e8;
+  }
+  .pull .q { font-size: 12.6px; line-height: 1.3; font-style: italic; }
+  .pull .a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.8px; letter-spacing: 1.3px; text-transform: uppercase;
+    color: #6b635a; margin-top: 5px;
+  }
+
+  /* ---------- markets ---------- */
+  .markets { border: 1px solid #14110f; }
+  .markets .mhead {
+    background: #14110f; color: #fff; padding: 6px 8px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between;
+  }
+  .mkt-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 5.5px 8px; border-bottom: 1px solid #ddd6ca;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .mkt-row:last-of-type { border-bottom: none; }
+  .mkt-row .nm { font-size: 9.4px; letter-spacing: 0.3px; color: #2b2723; }
+  .mkt-row .nm small { display: block; font-size: 7.6px; color: #7a7268; letter-spacing: 0.6px; }
+  .mkt-row .vl { text-align: right; font-size: 10.6px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .mkt-row .vl small { display: block; font-size: 8.2px; font-weight: 400; letter-spacing: 0.2px; }
+  .up { color: #1a6b3c; }
+  .down { color: #a51c1c; }
+  .mnote {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.4px; line-height: 1.45; color: #6b635a;
+    padding: 5px 8px 6px 8px; border-top: 1px solid #14110f;
+  }
+  .asiapill {
+    margin-top: 10px; border: 1px solid #b9b2a7; padding: 7px 9px 8px 9px;
+  }
+  .asiapill .t {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.8px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #e3120b; margin-bottom: 4px;
+  }
+  .asiapill .body { font-size: 10.4px; line-height: 1.36; }
+
+  /* ---------- three column row ---------- */
+  .row3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px;
+    padding-top: 8px; margin-top: 8px; border-top: 3px solid #14110f;
+  }
+  .row3 h2 { font-size: 18px; line-height: 1.09; letter-spacing: -0.4px; }
+  .row3 .standfirst { font-size: 11px; line-height: 1.32; margin: 4px 0 5px 0; }
+  .row3 .body { font-size: 10px; line-height: 1.38; }
+  .colhead {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8.2px; font-weight: 700; letter-spacing: 1.6px;
+    text-transform: uppercase; color: #14110f;
+    border-bottom: 1px solid #14110f; padding-bottom: 3px;
+    margin-bottom: 7px; display: flex; justify-content: space-between;
+  }
+  .colhead span { color: #e3120b; }
+
+  /* ---------- index strip ---------- */
+  .indexstrip {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 5px; padding: 3px 0 3px 0;
+    border-top: 1px solid #14110f; border-bottom: 1px solid #b9b2a7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.4px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #6b635a;
+  }
+  .indexstrip b { color: #14110f; font-weight: 700; }
+
+  /* ---------- bottom ---------- */
+  .bottom {
+    display: grid; grid-template-columns: 630px 304px; gap: 22px;
+    padding-top: 4px; margin-top: 3px; border-top: 1px solid #14110f;
+  }
+  .science { border-left: 4px solid #14110f; padding-left: 13px; }
+  .science h2 { font-size: 21px; line-height: 1.07; letter-spacing: -0.6px; }
+  .science .standfirst { font-size: 11.6px; margin: 4px 0 5px 0; }
+  .science .body { font-size: 10.8px; line-height: 1.41; }
+
+  .brief .bitem { padding: 4px 0 4px 0; border-bottom: 1px solid #d8d1c6; }
+  .brief .bitem:first-of-type { padding-top: 1px; }
+  .brief .bitem:last-of-type { border-bottom: none; }
+  .brief .bk {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.4px; font-weight: 700; letter-spacing: 1.3px;
+    text-transform: uppercase; color: #e3120b; margin-bottom: 1px;
+  }
+  .brief .bt { font-size: 9.8px; line-height: 1.32; }
+
+  /* ---------- footer ---------- */
+  .foot {
+    margin-top: auto; padding-top: 7px; border-top: 1px solid #14110f;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 7.4px; letter-spacing: 1.1px; text-transform: uppercase;
+    color: #6b635a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="strip">
+    <div><b>The Global Ledger</b> &nbsp;·&nbsp; Independent since 1904 &nbsp;·&nbsp; London · New York · Singapore</div>
+    <div>Vol. CXXII &nbsp;No. 41,882 &nbsp;·&nbsp; Tuesday edition</div>
+  </div>
+
+  <div class="masthead">
+    <div class="mast-title">The Global Ledger</div>
+    <div class="mast-sub">
+      <span>World affairs · Business · Science</span>
+      <span class="dot">■</span>
+      <span>Printed in 14 cities</span>
+    </div>
+  </div>
+
+  <div class="dateband">
+    <div class="date">Tuesday, 24 November 2026</div>
+    <div class="datemeta">World edition<br>Twelve pages · £3.80</div>
+  </div>
+
+  <!-- LEAD + MARKETS -->
+  <div class="topgrid">
+    <div class="lead">
+      <div class="kicker">Technology and markets</div>
+      <h1>Huang returns to Nvidia as board bows to pressure from Trump</h1>
+      <div class="deck">The chipmaker's shares jumped 31.5 per cent, adding almost $1tn in value, after an 11-day exile — powering Wall Street's best session since April 2025.</div>
+      <div class="leadcols">
+        <div class="body">
+          <p>Nvidia's board voted unanimously on Monday to reinstate Jensen Huang as president and chief executive, eleven days after he resigned over revelations of extramarital affairs, including one with a woman US intelligence believed to be a Chinese spy.</p>
+          <p>The company said the decision followed “input from senior levels of the United States government” and that it was satisfied his return posed no national security risk.</p>
+          <p>The reversal capped a turbulent fortnight: the board said only last week that Huang would not be coming back, and had begun a search for a successor.</p>
+        </div>
+        <div class="body">
+          <p>Trump told CNBC he had spoken to the board “directly and indirectly” and that Huang “did nothing wrong”. “I made the deal,” the president said.</p>
+          <p>Inside the Santa Clara headquarters, staff greeted Huang with chants of his first name across three floors. “Thank you all for the second chances,” he told them.</p>
+          <p>The pressure had been building for days: Elon Musk, Epic Games chief Tim Sweeney and large investors had all called publicly for his reinstatement.</p>
+        </div>
+      </div>
+      <div class="pull">
+        <div class="q">“I'm going to be a better CEO the second time around.”</div>
+        <div class="a">Jensen Huang, at Nvidia headquarters, Santa Clara</div>
+      </div>
+      <div class="byline">Reporting: Santa Clara, New York and Washington</div>
+    </div>
+
+    <div>
+      <div class="markets">
+        <div class="mhead"><span>Markets</span><span>Mon close</span></div>
+        <div class="mkt-row"><div class="nm">S&amp;P 500<small>New York</small></div><div class="vl up">7,237.17<small>+4.7%, best day since Apr 2025</small></div></div>
+        <div class="mkt-row"><div class="nm">Nasdaq Composite<small>New York</small></div><div class="vl up">24,089.56<small>+6.5%, tech rebound</small></div></div>
+        <div class="mkt-row"><div class="nm">Dow Jones<small>New York</small></div><div class="vl up">49,595.31<small>+3.0%</small></div></div>
+        <div class="mkt-row"><div class="nm">Nvidia<small>Nasdaq</small></div><div class="vl up">+31.5%<small>+$950bn market value</small></div></div>
+        <div class="mkt-row"><div class="nm">Brent crude<small>ICE, $/bbl</small></div><div class="vl down">89.0<small>−3.9%</small></div></div>
+        <div class="mkt-row"><div class="nm">WTI crude<small>Nymex, $/bbl</small></div><div class="vl down">80.1<small>−3.8%</small></div></div>
+        <div class="mnote">Monday closes. Nvidia's gain was its largest single session since May 2003. Oil slid almost 4 per cent on hopes of progress in US-Iran talks, even as tankers burned in the Gulf.</div>
+      </div>
+
+      <div class="asiapill">
+        <div class="t">The rally goes east</div>
+        <div class="body">Asia followed on Tuesday: Tokyo's Nikkei rose 4 per cent, South Korea's Kospi 6 per cent and Taiwan's Taiex 9 per cent, its second-best day on record. European and US futures slipped as chip stocks cooled.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE COLUMNS -->
+  <div class="row3">
+    <div>
+      <div class="colhead"><span>Pacific</span><span>01</span></div>
+      <h2>Solomon Islands scraps China security pact for Australian treaty</h2>
+      <div class="standfirst">Honiara has told Beijing it will not renew the 2022 agreement, clearing the way for a wide-ranging security deal with Canberra.</div>
+      <div class="body">
+        <p>Prime Minister Matthew Wale arrived in the Australian capital with a 24-member delegation ahead of Wednesday's signing, which is expected to embed Australia as the country's principal security partner, backed by A$980mn in regional funding through 2028.</p>
+        <p>Former premier Manasseh Sogavare, now opposition leader, warned the government to “carefully consider what it stands to lose”.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="colhead"><span>Climate</span><span>02</span></div>
+      <h2>COP31 collapses without a deal as fossil-fuel wording sinks talks</h2>
+      <div class="standfirst">The longest UN climate summit on record ended without a cover decision, after two days of overtime in Antalya.</div>
+      <div class="body">
+        <p>After 44 hours of overtime, negotiators could not agree on language phasing out coal, oil and gas. The EU, Britain, Norway, Panama and Pacific island states refused to endorse a text that did not name fossil fuels.</p>
+        <p>António Guterres said he was “deeply disappointed” but insisted there was “no ambiguity in the science”. Unresolved items pass to COP32 in Addis Ababa next November.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="colhead"><span>Sport</span><span>03</span></div>
+      <h2>Fifteen-year-old hits fastest List A hundred off 28 balls</h2>
+      <div class="standfirst">Vaibhav Sooryavanshi's 204 from 53 deliveries, including 28 sixes, carried India A past a target of 250 in Doha.</div>
+      <div class="body">
+        <p>The Bihar-born left-hander broke Jake Fraser-McGurk's 2023 record of 29 balls, then set a new mark for the fastest double century in the format, reached in 52 deliveries.</p>
+        <p>India A knocked off the runs in 14.2 overs in the Rising Stars Asia Cup. His 28 sixes are also a List A record.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="indexstrip">
+    <span><b>Inside today</b> &nbsp;·&nbsp; World 4 &nbsp;·&nbsp; Business 8 &nbsp;·&nbsp; Climate 11 &nbsp;·&nbsp; Science 14 &nbsp;·&nbsp; Sport 20</span>
+    <span>Editorial &amp; comment 26</span>
+  </div>
+  <div class="bottom">
+    <div class="science">
+      <div class="kicker">Science</div>
+      <h2>Euclid spies the most distant quasar yet, 630mn years after the Big Bang</h2>
+      <div class="standfirst">A 360mn-solar-mass black hole at redshift 8.13 breaks the telescope's own record by 40mn years.</div>
+      <div class="body">
+        <p>The European Space Agency said the object, catalogued J1504+6252 and nicknamed Dún Aonghasa, emerged from 18 months of Euclid survey data. Follow-up observations with the Keck telescopes, Hubble and then the James Webb space telescope confirmed its distance and mass.</p>
+        <p>Astronomers say a black hole that large, so early in cosmic history, sharpens the puzzle of how such objects formed and fed so quickly. The finding is published in Astronomy &amp; Astrophysics.</p>
+        <p>The consortium says the object must have grown at close to the physical limit for hundreds of millions of years — a challenge to models of early black-hole formation. Euclid has already found 12 new quasars beyond redshift 7, more than doubling the number known at that distance.</p>
+        <p>Euclid, launched in 2023, is surveying a third of the sky to map dark energy.</p>
+      </div>
+    </div>
+
+    <div class="brief">
+      <div class="colhead"><span>In brief</span><span>04</span></div>
+      <div class="bitem">
+        <div class="bk">Strait of Hormuz</div>
+        <div class="bt">Three oil tankers struck mines and caught fire in the Strait of Hormuz, Iran's Revolutionary Guard said — the latest in a string of attacks on shipping this month.</div>
+      </div>
+      <div class="bitem">
+        <div class="bk">Tokyo</div>
+        <div class="bt">Japan will pay its full 2027 contribution to the International Criminal Court by year-end, PM Sanae Takaichi said, building a buffer before US sanctions bite.</div>
+      </div>
+      <div class="bitem">
+        <div class="bk">Geneva</div>
+        <div class="bt">The World Food Programme warns war-driven shipping costs could add $727mn to its bills by mid-2027, putting aid for 7.3mn more people at risk.</div>
+      </div>
+      <div class="bitem">
+        <div class="bk">Brussels</div>
+        <div class="bt">The EU proposed a new sanctions package on Russia targeting banks, crypto platforms and Russian sport and culture.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Reporting: Reuters · AP · BBC · Sydney Morning Herald · ESA</div>
+    <div>Tuesday, 24 November 2026 &nbsp;·&nbsp; Page 1</div>
+  </div>
+
+</div>
+</body>
+</html>
